@@ -6,6 +6,7 @@
 
     <dimen name="card_default_height">196dp</dimen>
     <dimen name="card_default_text_size">18sp</dimen>
+    <dimen name="card_default_margin">8sp</dimen>
 
 
 

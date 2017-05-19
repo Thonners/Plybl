@@ -1,6 +1,10 @@
 package com.thonners.plybl;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 /**
@@ -10,18 +14,24 @@ import android.view.ViewGroup;
  * @since 18/05/17
  */
 
-public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeViewHolder> {
 
-    public HomeRecyclerViewAdapter() {
+    private Context context ;
+
+    public HomeRecyclerViewAdapter(Context context) {
+        this.context = context ;
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+    public HomeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // Inflate and initialise the view
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_default_layout, parent, false) ;
+        HomeViewHolder holder = new HomeViewHolder(v) ;
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(HomeViewHolder holder, int position) {
 
     }
 
