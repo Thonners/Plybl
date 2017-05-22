@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, CardViewHolder.CardViewHolderListener{
 
     private final String LOG_TAG = "HomeActivity" ;
 
@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity
         rv = (RecyclerView) findViewById(R.id.recyclerView) ;
         // Get the cards
         List<CardEntry> list = getCardEntries() ;
-        RecyclerViewAdapterDefault adapter = new RecyclerViewAdapterDefault(getApplication(), list) ;
+        RecyclerViewAdapterDefault adapter = new RecyclerViewAdapterDefault(this, list) ;
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
@@ -164,5 +164,10 @@ public class HomeActivity extends AppCompatActivity
         list.add(new CardEntry(getDrawable(R.drawable.home_page_banner), "Dave's new bookcase")) ;
         list.add(new CardEntry(getDrawable(R.drawable.home_page_banner), "Pete's new bookcase")) ;
         return list ;
+    }
+
+    @Override
+    public void cardClicked(CardViewHolder cardViewHolder) {
+        Log.d(LOG_TAG,"Card clicked with ID = " + cardViewHolder.getLayoutPosition()) ;
     }
 }

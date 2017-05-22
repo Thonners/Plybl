@@ -1,5 +1,6 @@
 package com.thonners.plybl;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-public class DesignChoiceActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
+public class DesignChoiceActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener, CardViewHolder.CardViewHolderListener{
 
     private final String LOG_TAG = "DesignChoiceActivity" ;
 
@@ -62,5 +63,13 @@ public class DesignChoiceActivity extends AppCompatActivity implements TabLayout
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
 
+    }
+    @Override
+    public void cardClicked(CardViewHolder cardViewHolder) {
+        int layoutPosition = cardViewHolder.getLayoutPosition() ;
+        Log.d(LOG_TAG,"Card clicked with ID = " + layoutPosition) ;
+        Intent personaliseActivity = new Intent(this, PersonaliseActivity.class) ;
+        personaliseActivity.putExtra("TITLE", "Personalise") ;
+        startActivity(personaliseActivity);
     }
 }

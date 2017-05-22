@@ -14,17 +14,24 @@ import android.widget.TextView;
  * @since 19/05/17
  */
 
-public class CardViewHolder extends RecyclerView.ViewHolder {
+public class CardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+    private CardViewHolderListener mListener ;
     private CardView card ;
     private ImageView iv ;
     private TextView mainTV ;
 
-    public CardViewHolder(View itemView) {
+    public static interface CardViewHolderListener {
+        void cardClicked(CardViewHolder cardViewHolder) ;
+    }
+
+    public CardViewHolder(View itemView, CardViewHolderListener listener) {
         super(itemView);
         card = (CardView) itemView.findViewById(R.id.card) ;
         iv = (ImageView) itemView.findViewById(R.id.imageView) ;
         mainTV = (TextView) itemView.findViewById(R.id.mainTextView) ;
+        this.mListener = listener ;
+        card.setOnClickListener(this);
     }
 
     @Override
@@ -39,5 +46,10 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
     public void setMainText(String text) {
         mainTV.setText(text);
+    }
+
+    @Override
+    public void onClick(View v) {
+        mListener.cardClicked(this);
     }
 }

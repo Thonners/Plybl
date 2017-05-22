@@ -29,7 +29,7 @@ public class RecyclerViewAdapterDefault extends RecyclerView.Adapter<CardViewHol
     public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Inflate and initialise the view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_default_layout, parent, false) ;
-        CardViewHolder holder = new CardViewHolder(v) ;
+        CardViewHolder holder = new CardViewHolder(v, (CardViewHolder.CardViewHolderListener) context) ;
         return holder;
     }
 

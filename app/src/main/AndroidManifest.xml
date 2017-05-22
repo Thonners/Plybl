@@ -28,6 +28,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.thonners.plybl.HomeActivity" />
         </activity>
+        <activity
+            android:name=".PersonaliseActivity"
+            android:label="@string/title_activity_personalise"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
