@@ -4,11 +4,9 @@
     <dimen name="top_fixed_layout_height">196dp</dimen>
     <dimen name="top_fixed_layout_button_width">48dp</dimen>
 
-    <dimen name="card_default_height">196dp</dimen>
+    <dimen name="card_default_height">156dp</dimen>
     <dimen name="card_default_text_size">18sp</dimen>
     <dimen name="card_default_margin">8sp</dimen>
-
-
 
 
     <!-- Default screen margins, per the Android Design guidelines. -->

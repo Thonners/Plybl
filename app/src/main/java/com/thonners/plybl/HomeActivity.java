@@ -1,8 +1,9 @@
 package com.thonners.plybl;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
@@ -41,6 +45,11 @@ public class HomeActivity extends AppCompatActivity
 
         // RecyclerView
         rv = (RecyclerView) findViewById(R.id.recyclerView) ;
+        // Get the cards
+        List<CardEntry> list = getCardEntries() ;
+        RecyclerViewAdapterDefault adapter = new RecyclerViewAdapterDefault(getApplication(), list) ;
+        rv.setAdapter(adapter);
+        rv.setLayoutManager(new LinearLayoutManager(this));
 
         // FABs
         FloatingActionButton fabChairs  = (FloatingActionButton) findViewById(R.id.fab_chairs) ;
@@ -117,12 +126,14 @@ public class HomeActivity extends AppCompatActivity
      */
     @Override
     public void onClick(View v) {
+        int categoryID = Integer.MIN_VALUE ;
         switch(v.getId()) {
             case R.id.fab_chairs:
                 showComingSoonToast("chairs");
                 break;
             case R.id.fab_shelves:
                 Log.d(LOG_TAG,"fab_shelves clicked") ;
+                categoryID = Design.DesignCategory.SHELVING.getCategoryId() ;
                 break;
             case R.id.fab_tables:
                 showComingSoonToast("tables");
@@ -130,6 +141,12 @@ public class HomeActivity extends AppCompatActivity
             case R.id.fab_garden:
                 showComingSoonToast("outdoor things");
                 break;
+        }
+        if (categoryID > 0) {
+            Intent newIntent = new Intent(this, DesignChoiceActivity.class) ;
+                Log.d(LOG_TAG,"Design.DESIGN_CATEGORY_INTENT_EXTRA = " + categoryID) ;
+            newIntent.putExtra(Design.DESIGN_CATEGORY_INTENT_EXTRA, categoryID) ;
+            startActivity(newIntent);
         }
     }
 
@@ -140,5 +157,12 @@ public class HomeActivity extends AppCompatActivity
     private void showComingSoonToast(String whatsComingSoon) {
         String message = "Sorry, " + whatsComingSoon + " are not yet available. Please try shelves!";
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+
+    private List<CardEntry> getCardEntries() {
+        List<CardEntry> list = new ArrayList<>(2) ;
+        list.add(new CardEntry(getDrawable(R.drawable.home_page_banner), "Dave's new bookcase")) ;
+        list.add(new CardEntry(getDrawable(R.drawable.home_page_banner), "Pete's new bookcase")) ;
+        return list ;
     }
 }

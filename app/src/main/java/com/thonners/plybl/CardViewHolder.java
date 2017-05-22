@@ -1,5 +1,6 @@
 package com.thonners.plybl;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,13 +14,13 @@ import android.widget.TextView;
  * @since 19/05/17
  */
 
-public class HomeViewHolder extends RecyclerView.ViewHolder {
+public class CardViewHolder extends RecyclerView.ViewHolder {
 
     private CardView card ;
     private ImageView iv ;
     private TextView mainTV ;
 
-    public HomeViewHolder(View itemView) {
+    public CardViewHolder(View itemView) {
         super(itemView);
         card = (CardView) itemView.findViewById(R.id.card) ;
         iv = (ImageView) itemView.findViewById(R.id.imageView) ;
@@ -31,7 +32,12 @@ public class HomeViewHolder extends RecyclerView.ViewHolder {
         return super.toString();
     }
 
-    public void setImage(int imageRID) {
-        iv.setImageResource(imageRID);
+    public void setImage(Drawable drawable) {
+        //iv.setImageResource(imageRID);
+        iv.setImageDrawable(drawable);
+    }
+
+    public void setMainText(String text) {
+        mainTV.setText(text);
     }
 }
