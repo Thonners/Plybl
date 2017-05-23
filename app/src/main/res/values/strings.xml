@@ -7,6 +7,8 @@
     <string name="personalise_height">Height</string>
     <string name="personalise_no_rows">No. Rows</string>
     <string name="personalise_no_columns">No. Columns</string>
+    <string name="personalise_wood_quality">Wood quality:</string>
+    <string name="personalise_colour">Paint colour:</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -14,4 +16,5 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_design_choice">DesignChoiceActivity</string>
     <string name="title_activity_personalise">PersonaliseActivity</string>
+
 </resources>

@@ -1,12 +1,24 @@
 <resources>
 
-    <style name="cardDefaultText" parent="AppTheme">
-        <item name="android:textColor">@color/colorPrimaryDark</item>
+    <style name="cardDefaultText" parent="defaultText">
         <item name="android:textSize">@dimen/card_default_text_size</item>
+    </style>
+
+    <style name="promptDefaultText" parent="defaultText">
+        <item name="android:textSize">@dimen/prompt_text_size</item>
+    </style>
+
+    <style name="radioButtonDefaultText" parent="defaultText">
+        <item name="android:textSize">@dimen/radio_button_text_size</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="defaultText" parent="AppTheme">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
     </style>
-
+    
     <style name="PlyblTabLayoutStyle" parent="Widget.Design.TabLayout">
         <item name="tabIndicatorColor">@color/colorPrimaryDark</item>
     </style>

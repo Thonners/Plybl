@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:windowBackground"
+    android:clickable="true"
+    tools:context="com.thonners.plybl.PersonaliseActivityFragment2">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="156dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home_page_banner"
+        app:layout_constraintHorizontal_bias="1.0" />
+
+    <TextView
+        android:id="@+id/prompt_wood_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/personalise_wood_quality"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_marginStart="8dp" />
+
+    <include
+        android:id="@+id/wood_finish_1"
+        layout="@layout/layout_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/prompt_wood_finish"
+        app:layout_constraintRight_toLeftOf="@+id/wood_finish_2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <include
+        android:id="@+id/wood_finish_2"
+        layout="@layout/layout_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/wood_finish_1"
+        app:layout_constraintRight_toLeftOf="@+id/wood_finish_3"
+        app:layout_constraintTop_toTopOf="@+id/wood_finish_1"
+        />
+
+    <include
+        android:id="@+id/wood_finish_3"
+        layout="@layout/layout_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/wood_finish_2"
+        app:layout_constraintRight_toLeftOf="@+id/wood_finish_4"
+        app:layout_constraintTop_toTopOf="@+id/wood_finish_1" />
+
+    <include
+        android:id="@+id/wood_finish_4"
+        layout="@layout/layout_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/wood_finish_1"
+        app:layout_constraintRight_toLeftOf="@+id/wood_finish_5"
+        app:layout_constraintLeft_toRightOf="@+id/wood_finish_3"/>
+
+    <include
+        android:id="@+id/wood_finish_5"
+        layout="@layout/layout_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/wood_finish_4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/wood_finish_1"/>
+
+
+    <TextView
+        android:id="@+id/prompt_colour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/personalise_colour"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wood_finish_1"
+        android:layout_marginStart="8dp" />
+
+    <include
+        android:id="@+id/colour_1"
+        layout="@layout/layout_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/prompt_colour"
+        app:layout_constraintRight_toLeftOf="@+id/colour_2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <include
+        android:id="@+id/colour_2"
+        layout="@layout/layout_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/colour_1"
+        app:layout_constraintRight_toLeftOf="@+id/colour_3"
+        app:layout_constraintTop_toTopOf="@+id/colour_1"
+        />
+
+    <include
+        android:id="@+id/colour_3"
+        layout="@layout/layout_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/colour_2"
+        app:layout_constraintRight_toLeftOf="@+id/colour_4"
+        app:layout_constraintTop_toTopOf="@+id/colour_1" />
+
+    <include
+        android:id="@+id/colour_4"
+        layout="@layout/layout_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/colour_1"
+        app:layout_constraintRight_toLeftOf="@+id/colour_5"
+        app:layout_constraintLeft_toRightOf="@+id/colour_3"/>
+
+    <include
+        android:id="@+id/colour_5"
+        layout="@layout/layout_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/colour_4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/colour_1"/>
+
+
+</android.support.constraint.ConstraintLayout>
