@@ -9,6 +9,7 @@
     <string name="personalise_no_columns">No. Columns</string>
     <string name="personalise_wood_quality">Wood quality:</string>
     <string name="personalise_colour">Paint colour:</string>
+    <string name="personalise_joint">Joint Type:</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

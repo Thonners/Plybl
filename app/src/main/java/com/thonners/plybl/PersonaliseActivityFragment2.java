@@ -4,9 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 
 /**
@@ -17,7 +21,15 @@ import android.view.ViewGroup;
  * Use the {@link PersonaliseActivityFragment2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PersonaliseActivityFragment2 extends Fragment {
+public class PersonaliseActivityFragment2 extends Fragment implements View.OnClickListener{
+
+    private final ArrayList<RadioButtonView> qualityButtons = new ArrayList<>(5) ;
+    private final ArrayList<RadioButtonView> paintColourButtons = new ArrayList<>(5) ;
+    private final ArrayList<RadioButtonView> jointTypeButtons = new ArrayList<>(5) ;
+
+    private int selectedQuality = -1 ;
+    private int selectedColour = -1 ;
+    private int selectedJoint = -1;
 
     private OnFragmentInteractionListener mListener;
 
@@ -47,7 +59,92 @@ public class PersonaliseActivityFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_personalise_2, container, false);
+        View view = inflater.inflate(R.layout.fragment_personalise_2, container, false);
+
+        // Clear the arraylists so that we keep the correct indices for the newly created views
+        qualityButtons.clear();
+        paintColourButtons.clear();
+        jointTypeButtons.clear();
+
+        // Get the instances and add them to the collections
+        qualityButtons.add((RadioButtonView) view.findViewById(R.id.wood_finish_1)) ;
+        qualityButtons.add((RadioButtonView) view.findViewById(R.id.wood_finish_2)) ;
+        qualityButtons.add((RadioButtonView) view.findViewById(R.id.wood_finish_3)) ;
+        qualityButtons.add((RadioButtonView) view.findViewById(R.id.wood_finish_4)) ;
+        qualityButtons.add((RadioButtonView) view.findViewById(R.id.wood_finish_5)) ;
+        qualityButtons.get(0).initialise(getContext(), getResources().getDrawable(R.drawable.wood_quality_raw, null), "Raw", RadioButtonView.Type.QUALITY) ;
+        qualityButtons.get(1).initialise(getContext(), getResources().getDrawable(R.drawable.wood_quality_walnut, null), "Walnut", RadioButtonView.Type.QUALITY) ;
+        qualityButtons.get(2).initialise(getContext(), getResources().getDrawable(R.drawable.wood_quality_blackbutt, null), "Blackbutt", RadioButtonView.Type.QUALITY) ;
+        qualityButtons.get(3).initialise(getContext(), getResources().getDrawable(R.drawable.wood_quality_jarrah, null), "Jarrah", RadioButtonView.Type.QUALITY) ;
+        qualityButtons.get(4).initialise(getContext(), getResources().getDrawable(R.drawable.wood_quality_mahogany, null), "Mahogany", RadioButtonView.Type.QUALITY) ;
+
+        paintColourButtons.add((RadioButtonView) view.findViewById(R.id.colour_1)) ;
+        paintColourButtons.add((RadioButtonView) view.findViewById(R.id.colour_2)) ;
+        paintColourButtons.add((RadioButtonView) view.findViewById(R.id.colour_3)) ;
+        paintColourButtons.add((RadioButtonView) view.findViewById(R.id.colour_4)) ;
+        paintColourButtons.add((RadioButtonView) view.findViewById(R.id.colour_5)) ;
+        paintColourButtons.get(0).initialise(getContext(), view.findViewById(R.id.colour_1), ContextCompat.getColor(getContext(),R.color.clear), "None", RadioButtonView.Type.COLOUR);
+        paintColourButtons.get(1).initialise(getContext(), view.findViewById(R.id.colour_2), ContextCompat.getColor(getContext(),R.color.primer), "Primed", RadioButtonView.Type.COLOUR) ;
+        paintColourButtons.get(2).initialise(getContext(), view.findViewById(R.id.colour_3), ContextCompat.getColor(getContext(),R.color.white), "White", RadioButtonView.Type.COLOUR) ;
+        paintColourButtons.get(3).initialise(getContext(), view.findViewById(R.id.colour_4), ContextCompat.getColor(getContext(),R.color.black), "Black", RadioButtonView.Type.COLOUR) ;
+        paintColourButtons.get(4).initialise(getContext(), view.findViewById(R.id.colour_5), ContextCompat.getColor(getContext(),R.color.colorPrimary), "Custom", RadioButtonView.Type.COLOUR) ;
+
+
+        jointTypeButtons.add((RadioButtonView) view.findViewById(R.id.joint_1)) ;
+        jointTypeButtons.add((RadioButtonView) view.findViewById(R.id.joint_2)) ;
+        jointTypeButtons.add((RadioButtonView) view.findViewById(R.id.joint_3)) ;
+        jointTypeButtons.add((RadioButtonView) view.findViewById(R.id.joint_4)) ;
+        jointTypeButtons.add((RadioButtonView) view.findViewById(R.id.joint_5)) ;
+        jointTypeButtons.get(0).initialise(getContext(), getResources().getDrawable(R.drawable.joint_wedge, null), "Wedged", RadioButtonView.Type.JOINT) ;
+        jointTypeButtons.get(1).initialise(getContext(), getResources().getDrawable(R.drawable.joint_dovetail, null), "Dovetail", RadioButtonView.Type.JOINT) ;
+        jointTypeButtons.get(2).initialise(getContext(), getResources().getDrawable(R.drawable.joint_mortise, null), "Mortise and Tenon", RadioButtonView.Type.JOINT) ;
+        jointTypeButtons.get(3).initialise(getContext(), getResources().getDrawable(R.drawable.joint_dowel, null), "Dowel", RadioButtonView.Type.JOINT) ;
+        jointTypeButtons.get(4).initialise(getContext(), getResources().getDrawable(R.drawable.joint_rabbet, null), "Rabbet", RadioButtonView.Type.JOINT) ;
+
+        // On Click Listeners
+        for (RadioButtonView button : qualityButtons) {
+            button.setOnClickListener(this);
+        }
+        for (RadioButtonView button : paintColourButtons) {
+            button.setOnClickListener(this);
+        }
+       for (RadioButtonView button : jointTypeButtons) {
+            button.setOnClickListener(this);
+        }
+
+        // Reinstate previously selected values
+        if (selectedQuality >= 0) qualityButtons.get(selectedQuality).setButtonSelected(true);
+        if (selectedColour >= 0) paintColourButtons.get(selectedColour).setButtonSelected(true);
+        if (selectedJoint >= 0) jointTypeButtons.get(selectedJoint).setButtonSelected(true);
+
+        return view ;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v instanceof RadioButtonView) {
+            switch (((RadioButtonView) v).getType()) {
+                case QUALITY:
+                    selectedQuality = qualityButtons.indexOf(v) ;
+                    setSelected(((RadioButtonView) v), qualityButtons) ;
+                    break;
+                case COLOUR:
+                    selectedColour = paintColourButtons.indexOf(v) ;
+                    setSelected(((RadioButtonView) v), paintColourButtons) ;
+                    break;
+                case JOINT:
+                    selectedJoint = jointTypeButtons.indexOf(v) ;
+                    setSelected(((RadioButtonView) v), jointTypeButtons) ;
+                    break;
+            }
+        }
+    }
+
+    public void setSelected(RadioButtonView v, ArrayList<RadioButtonView> buttons) {
+        for (RadioButtonView button : buttons) {
+            button.setButtonSelected(false);
+        }
+        v.setButtonSelected(true);
     }
 
     @Override
@@ -81,4 +178,96 @@ public class PersonaliseActivityFragment2 extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    /**
+     * Class to manage the radio buttons for finish, paint, etc.
+     *//*
+    private static class RadioButton implements View.OnClickListener{
+
+        public enum Type {
+            QUALITY, COLOUR, JOINT;
+        }
+
+        private Context context ;
+        private RadioButtonInteractionListener listener ;
+        private CardView card ;
+        private TextView tv ;
+        private Drawable background = null;
+        int colourID  ;
+        private String name ;
+        private boolean isSelected = false ;
+        private Type type ;
+
+        public interface RadioButtonInteractionListener {
+            void setNotSelected(Type type) ;
+        }
+
+        public RadioButton(Context context, RadioButtonInteractionListener listener, View parentView, Drawable background, String name, Type type) {
+            this.context = context ;
+            this.listener = listener ;
+            card = (CardView) parentView.findViewById(R.id.card);
+            tv = (TextView) parentView.findViewById(R.id.text) ;
+            this.background = background ;
+            this.name = name ;
+            this.type = type ;
+            initialise();
+        }
+
+        public RadioButton(Context context, RadioButtonInteractionListener listener, View parentView, int colour, String name, Type type) {
+            this.context = context ;
+            this.listener = listener ;
+            card = (CardView) parentView.findViewById(R.id.card);
+            tv = (TextView) parentView.findViewById(R.id.text) ;
+            this.colourID = colour ;
+            this.name = name ;
+            this.type = type ;
+            initialise();
+        }
+
+        private void initialise() {
+            tv.setText(name);
+            if (background == null) {
+                card.setCardBackgroundColor(colourID);
+            } else {
+                card.setBackground(background);
+            }
+        }
+
+        public void setOnClickListener(View.OnClickListener listener) {
+            card.setOnClickListener(listener);
+        }
+
+        public boolean isSelected() {
+            return isSelected;
+        }
+
+        public Type getType() {
+            return type;
+        }
+
+        @Override
+        public void onClick(View v) {
+            listener.setNotSelected();
+        }
+
+        public void setSelected(boolean selected) {
+            isSelected = selected;
+            if (isSelected) {
+                card.animate()
+                        .setDuration(300)
+                        .setInterpolator(new AccelerateDecelerateInterpolator())
+                        .translationZ(context.getResources().getDimensionPixelOffset(R.dimen.fab_pressed_z))
+                        .start();
+            } else {
+                card.animate()
+                        .setDuration(300)
+                        .setInterpolator(new AccelerateDecelerateInterpolator())
+                        .translationZ(context.getResources().getDimensionPixelOffset(R.dimen.fab_pressed_z))
+                        .start();
+            }
+
+
+        }
+    }
+*/
 }

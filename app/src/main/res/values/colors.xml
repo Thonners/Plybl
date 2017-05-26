@@ -6,4 +6,11 @@
     <color name="colorAccent">#7e57c2</color>
     <color name="colorAccentLight">#b085f5</color>
     <color name="colorAccentDark">#4d2c91</color>
+
+    <!-- Paint colour options -->
+    <color name="clear">#11FFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="primer">#FFAAAADD</color>
+
 </resources>

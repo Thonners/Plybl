@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -123,6 +124,17 @@ public class PersonaliseActivity extends AppCompatActivity implements DialogInte
                 break;
             default:
                 Log.d(LOG_TAG, "Unrecognised view clicked. v.id = " + v.getId()) ;
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home :
+                onBackPressed();
+                return true ;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 

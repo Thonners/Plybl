@@ -9,7 +9,7 @@
     </style>
 
     <style name="radioButtonDefaultText" parent="defaultText">
-        <item name="android:textSize">@dimen/radio_button_text_size</item>
+        <item name="android:textSize">@dimen/radio_button_text_size_resting</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
 
@@ -18,7 +18,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
     </style>
-    
+
     <style name="PlyblTabLayoutStyle" parent="Widget.Design.TabLayout">
         <item name="tabIndicatorColor">@color/colorPrimaryDark</item>
     </style>

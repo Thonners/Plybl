@@ -103,7 +103,6 @@ public class PersonaliseActivityFragment1 extends Fragment implements SeekBar.On
 
     }
 
-
     private void initialise() {
         // Set some standard values
         // Height = 90cm
