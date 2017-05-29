@@ -1,6 +1,7 @@
 package com.thonners.plybl;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -120,7 +121,28 @@ public class PersonaliseActivity extends AppCompatActivity implements DialogInte
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fab:
-                loadNextFragment();
+                if (fragmentPageNo == 1) {
+                    loadNextFragment();
+                } else {
+                    showCheckoutDialog() ;
+                }
+                break;
+            case R.id.dialog_checkout_card:
+                Intent basketActivityIntent = new Intent(this, BasketActivity.class) ;
+                startActivity(basketActivityIntent);
+                break;
+            case R.id.dialog_continue_card:
+                break;
+            case R.id.dialog_chair_card:
+                showUnsupportedSnackbar();
+                break;
+            case R.id.dialog_shelving_card:
+                break;
+            case R.id.dialog_table_card:
+                showUnsupportedSnackbar();
+                break;
+            case R.id.dialog_outdoor_card:
+                showUnsupportedSnackbar();
                 break;
             default:
                 Log.d(LOG_TAG, "Unrecognised view clicked. v.id = " + v.getId()) ;
@@ -156,5 +178,30 @@ public class PersonaliseActivity extends AppCompatActivity implements DialogInte
                 fab.setImageResource(R.drawable.ic_add_shopping_cart_white_24dp);
                 break;
         }
+    }
+
+    private void showCheckoutDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this) ;
+        // Create the view
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_checkout_popup, cl, false) ;
+        // Set the view
+        builder.setView(dialogView) ;
+        AlertDialog alertDialog = builder.create() ;
+        // Add onClickListeners
+        dialogView.findViewById(R.id.dialog_checkout_card).setOnClickListener(this);
+        dialogView.findViewById(R.id.dialog_continue_card).setOnClickListener(this);
+        dialogView.findViewById(R.id.dialog_chair_card).setOnClickListener(this);
+        dialogView.findViewById(R.id.dialog_shelving_card).setOnClickListener(this);
+        dialogView.findViewById(R.id.dialog_table_card).setOnClickListener(this);
+        dialogView.findViewById(R.id.dialog_outdoor_card).setOnClickListener(this);
+        // Show the dialog
+        alertDialog.show();
+
+        // Make it wrap the content
+        alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    }
+
+    private void showUnsupportedSnackbar() {
+
     }
 }
