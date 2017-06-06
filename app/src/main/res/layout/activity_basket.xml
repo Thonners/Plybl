@@ -98,7 +98,7 @@
         android:id="@+id/buy_now_button">
         <TextView
             android:text="BUY NOW"
-            android:textColor="@color/colorPrimaryLight"
+            android:textColor="@color/white"
             android:layout_gravity="center"
             style="@style/cardDefaultText"/>
     </android.support.v7.widget.CardView>
