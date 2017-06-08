@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * Activity for displaying the basket
+ */
 public class BasketActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override

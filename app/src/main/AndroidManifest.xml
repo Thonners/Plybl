@@ -45,7 +45,8 @@
         <activity
             android:name=".LogInActivity"
             android:label="@string/title_activity_log_in" />
-        <activity android:name=".PayActivity"></activity>
+        <activity android:name=".PayActivity" />
+        <activity android:name=".OrderConfirmation"></activity>
     </application>
 
 </manifest>

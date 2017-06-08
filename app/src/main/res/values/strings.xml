@@ -22,6 +22,12 @@
     <string name="title_activity_personalise">PersonaliseActivity</string>
     <string name="title_activity_log_in">Sign in</string>
 
+    <string name="order_conf_order_no">Order Number:\n# %1$d</string>
+    <string name="order_conf_made_by">Being made by:</string>
+    <string name="order_conf_eta">ETA: %1$d days</string>
+    <string name="order_conf_not_in_title">Not going to be in?</string>
+    <string name="order_conf_not_in_prompt">Touch here for more options…</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
