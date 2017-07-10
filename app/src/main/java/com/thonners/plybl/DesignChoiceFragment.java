@@ -54,12 +54,12 @@ public class DesignChoiceFragment extends Fragment {
 
     private List<CardEntry> getCardEntries() {
         List<CardEntry> list = new ArrayList<>(6) ;
-        list.add(new CardEntry(getContext().getDrawable(R.drawable.home_page_banner), "Basic bookcase")) ;
-        list.add(new CardEntry(getContext().getDrawable(R.drawable.home_page_banner), "Fancy bookcase")) ;
-        list.add(new CardEntry(getContext().getDrawable(R.drawable.home_page_banner), "Corner bookcase")) ;
-        list.add(new CardEntry(getContext().getDrawable(R.drawable.home_page_banner), "Tall bookcase")) ;
-        list.add(new CardEntry(getContext().getDrawable(R.drawable.home_page_banner), "Rich mahogany bookcase")) ;
-        list.add(new CardEntry(getContext().getDrawable(R.drawable.home_page_banner), "Slim bookcase")) ;
+        list.add(new CardEntry(getContext().getDrawable(R.drawable.bookcase_4_512), "Spiral bookcase")) ;
+        list.add(new CardEntry(getContext().getDrawable(R.drawable.bookcase_3_256), "Slanted bookcase")) ;
+        list.add(new CardEntry(getContext().getDrawable(R.drawable.bookcase_2_256), "Abstract bookcase")) ;
+        list.add(new CardEntry(getContext().getDrawable(R.drawable.bookcase_1), "Rounded bookcase")) ;
+        list.add(new CardEntry(getContext().getDrawable(R.drawable.bookcase_4_512), "Spiral bookcase")) ;
+        list.add(new CardEntry(getContext().getDrawable(R.drawable.bookcase_3_256), "Slanted bookcase")) ;
         return list ;
     }
 }

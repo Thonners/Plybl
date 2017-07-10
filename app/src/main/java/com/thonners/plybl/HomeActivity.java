@@ -161,8 +161,8 @@ public class HomeActivity extends AppCompatActivity
 
     private List<CardEntry> getCardEntries() {
         List<CardEntry> list = new ArrayList<>(2) ;
-        list.add(new CardEntry(getDrawable(R.drawable.home_page_banner), "Dave's new bookcase")) ;
-        list.add(new CardEntry(getDrawable(R.drawable.home_page_banner), "Pete's new bookcase")) ;
+        list.add(new CardEntry(getDrawable(R.drawable.bookcase_1), "Dave's new bookcase")) ;
+        list.add(new CardEntry(getDrawable(R.drawable.table_1), "Pete's new table")) ;
         return list ;
     }
 
